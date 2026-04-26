@@ -12,6 +12,11 @@ class AuthController extends Controller
     // method login return view login
     public function login(Request $request)
     {
+        // log info
+        logger()->info('test', [
+            'data' => 'Test',
+        ]);
+
         return view('auth.login');
     }
 
@@ -27,7 +32,9 @@ class AuthController extends Controller
             'state' => $state,
         ]);
 
-        return redirect(env('SSO_BASE_URL') . '/oauth/authorize?' . $query);
+        $callback_url = env('SSO_BASE_URL') . '/oauth/authorize?' . $query;
+
+        return redirect($callback_url);
     }
 
     function callback(Request $request)
@@ -46,6 +53,11 @@ class AuthController extends Controller
         ]);
 
         $data = $response->json();
+
+        // log info
+        logger()->info('data', [
+            'data' => $data,
+        ]);
 
         $request->session()->put('access_token', $data['access_token']);
         $request->session()->put('refresh_token', $data['refresh_token']);

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SSOController;
 
 // login
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -15,8 +16,13 @@ Route::get('/sso/callback', [AuthController::class, 'callback'])->name('sso.call
 
 // protected routes
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-// Route::middleware('auth')->group(function () {});
+// Route::middleware('auth')->group(function () {
+// });
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/login/sso', [SSOController::class, 'redirect'])->name('login.sso');
+Route::get('/login/sso/callback', [SSOController::class, 'callback']);
