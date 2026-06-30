@@ -42,4 +42,11 @@ return [
         'base_uri' => env('SSO1_BASE_URL'),
     ],
 
+    'sso_ldap' => [
+        'client_id' => env('SSO_LDAP_CLIENT_ID'),
+        'client_secret' => env('SSO_LDAP_CLIENT_SECRET'),
+        'redirect' => env('SSO_LDAP_CLIENT_CALLBACK_PATH'),
+        'base_uri' => env('SSO_LDAP_BASE_URL'),
+    ],
+
 ];
