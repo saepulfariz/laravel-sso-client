@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SSOController;
+use App\Http\Controllers\SSOLdapController;
 
 // login
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -26,3 +27,7 @@ Route::get('/', function () {
 
 Route::get('/login/sso', [SSOController::class, 'redirect'])->name('login.sso');
 Route::get('/login/sso/callback', [SSOController::class, 'callback']);
+
+// sso ldap
+Route::get('/login/sso-ldap', [SSOLdapController::class, 'redirect'])->name('login.sso-ldap');
+Route::get('/login/sso-ldap/callback', [SSOLdapController::class, 'callback']);
