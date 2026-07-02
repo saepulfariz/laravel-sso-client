@@ -15,4 +15,9 @@
     <a href="{{ route('login.sso') }}">
         <button type="button">Login with SSO Test</button>
     </a>
+
+    <br>
+    <a href="{{ route('login.sso-ldap') }}">
+        <button type="button">Login with SSO LDAP Test</button>
+    </a>
 </form>
